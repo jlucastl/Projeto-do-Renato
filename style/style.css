@@ -1,0 +1,407 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+}
+
+:root {
+    --cor-principal: rgba(0, 105, 0, 0.767);
+    --cor-fonte: rgb(37, 37, 37);
+}
+body {
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: var(--cor-principal);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 1rem;
+}
+#MENU_ICONE {
+    display: flex;
+    align-items: center;
+    gap: 38%;
+}
+
+#MENU_ICONE span{
+    position: relative;
+    z-index: 1000;
+    font-size: 4rem;
+    color: rgb(235, 235, 235);
+    text-shadow: 1px 2px 8px rgb(22, 22, 22);
+    cursor: pointer;
+}
+#MENU_ICONE span:hover {
+    transition: transform .2s ease;
+    transform: scale(1.1);
+}
+
+#MENU {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    padding: 0px 2.5rem;
+    height: 94%;
+    width: 15%;
+    left: 0;
+    top: 0;
+    box-shadow: 3px 0px 10px rgb(97, 97, 97);
+    z-index: 2;
+    transition: .2s ease;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+#header_menu {
+    display: flex;
+    background-color: rgb(252, 252, 252);
+    position: sticky;
+    align-items: center;
+    top: 0;
+    padding-right: 15vw;
+    height: 11%;
+    z-index: 1001;
+    box-shadow: 0px 5px 10px gray;
+}
+
+#header_menu span {
+    font-size: 4.5rem;
+    margin-left: 1.7vw;
+}
+#header_menu span:hover {
+    transition: transform .2s ease;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.motion {
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.motion h1 {
+    position: relative;
+    z-index: 1001;
+}
+
+.itens {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12rem;
+    position: absolute;
+}
+.itens button {
+    background-color: limegreen;
+    padding: 1.3rem;
+    font-size: 1.6rem;
+    border-radius: 1rem;
+    width: 20rem;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0px 0px 8px rgba(31, 31, 31, 0.726);
+}
+
+.itens ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    list-style: none;
+    margin-top: 8rem;
+    padding: 2.5rem;
+}
+.itens li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(214, 214, 214);
+    box-shadow: 0px 0px 8px rgb(100, 100, 100);
+    width: 14rem;
+    padding: 1.5rem;
+    font-size: 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+.itens h3 {
+    overflow-x: hidden;
+}
+
+.itens button:hover {
+    background-color: rgb(45, 184, 45);
+    box-shadow: 0px 0px 10px rgb(78, 78, 78);
+}
+
+.itens li:hover {
+    background-color: rgb(190, 190, 190);
+}
+
+.itens li:hover .REMOVER_SALA {
+    display: flex;
+}
+
+.REMOVER_SALA{
+    position: absolute;
+    margin-left: 16.5rem;
+    margin-bottom: 3.5rem;
+    display: none;
+    text-align: center;
+}
+.REMOVER_SALA span {
+    font-size: 1.6rem;
+    background-color: brown;
+    border-radius: 5rem;
+    padding: .09rem;
+}
+
+.LOGO {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.LOGO img{
+    width: 5rem;
+}
+
+.LOGIN button:hover {
+    cursor: pointer;
+    background-color: rgb(45, 184, 45);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.534);
+}
+
+.LOGIN button{
+    background-color: limegreen;
+    color: black;
+    font-size: 1.1rem;
+    padding: .5rem;
+    width: 6rem;
+    border: none;
+    box-shadow: 0px 0px 5px rgba(29, 29, 29, 0.548);
+    border-radius: .3rem;
+}
+
+/* MAIN --------------------------------- */
+
+#CORPO {
+    margin-top: 9rem;
+}
+.APRESENTACAO {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    color: var(--cor-fonte);
+    align-items: center;
+}
+
+.APRESENTACAO h1 {
+    pointer-events: none;
+    text-decoration: underline;
+}
+
+.APRESENTACAO button{
+    text-decoration: none;
+    color: var(--cor-fonte);
+    background-color: limegreen;
+    box-shadow: 0px 0px 5px rgba(128, 128, 128, 0.849);
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 15rem;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 17px;
+    border: none;
+}
+.APRESENTACAO button:hover {
+    background-color: rgb(45, 184, 45);
+}
+
+.MODAL, .MODAL_ALUNO {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    align-items: center;
+    z-index: 1001;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 10px black;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 1rem;
+    gap: 1.2rem;
+}
+
+.MODAL h1, .MODAL_ALUNO h1 {
+    pointer-events: none;
+}
+
+#nomeSala, #nomeAluno {
+    padding: .8rem;
+    border: 2px solid black;
+    width: 15rem;
+    border-radius: 1.3rem;
+}
+
+.MODAL button, .MODAL_ALUNO button {
+    padding: .7rem;
+    width: 8rem;
+    background-color: limegreen;
+    border: none;
+    border-radius: .7rem;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.MODAL button:hover, .MODAL_ALUNO button:hover {
+    background-color: rgb(45, 184, 45);
+}
+
+#btn-cancelar {
+    background-color: rgb(209, 45, 45);
+}
+#btn-cancelar:hover {
+    background-color: rgb(192, 39, 39);
+}
+
+#alunosContainer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+#ESCOLHER_IMG {
+    display: none;
+}
+
+#BOTAO_IMG {
+    background-color: transparent;
+    border: dotted black;
+    width: 12rem;
+    padding: 1.3rem;
+}
+#BOTAO_IMG:hover {
+    border: dotted green;
+}
+
+.aluno{
+    margin: 1.5rem;
+    height: 30rem;
+    width: 23rem;
+    text-align: center;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    border-radius: 1.5rem;
+    box-shadow: 0px 0px 10px rgba(43, 43, 43, 0.534);
+}
+.aluno h3 {
+    background-color: limegreen;
+    padding: 2rem;
+    width: 100%;
+    border-bottom-right-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+    box-shadow: 0px 0px 10px rgba(43, 43, 43, 0.534);
+}
+.OPCOES {
+    position: absolute;
+    margin-bottom: 21.8vw;
+    margin-left: 15vw;
+    cursor: pointer;
+}
+.OPCOES span {
+    font-size: 2.8rem;
+}
+
+.OPCOES span:hover {
+    transition: .1s ease;
+    color: green;
+    transform: scale(1.2);
+
+}
+#OPCOES_MENU {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    width: 15rem;
+    gap: .5rem;
+    padding: .5rem;
+    position: absolute;
+    top: 3rem;
+    border-radius: 1rem;
+    box-shadow: 3px 3px 5px gray;
+}
+
+#OPCOES_MENU h2 {
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+}
+#OPCOES_MENU h2:hover {
+    color: green;
+}
+#OPCOES_MENU h2:hover span {
+    color: var(--cor-fonte);
+}
+
+#OPCOES_MENU span {
+    font-size: 3rem;
+}
+#OPCOES_MENU span:hover {
+    transform: scale(1.1);
+    color: green;
+}
+
+
+/* RODAPE -------------------------------- */
+
+#RODAPE {
+    background-color: var(--cor-principal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    padding: 1rem 0px;
+    color: var(--cor-fonte);
+    width: 100%;
+    margin-top: 26.4vw;
+}
+#RODAPE p, h3{
+    font-size: 1.1rem;
+}
+
+@media (max-width: 800px) {
+    #MENU {
+        width: 50%;
+        z-index: 2;
+    }
+    #header_menu {
+        padding-right: 50vw;
+    }
+
+    .itens li {
+        width: 40vw;
+    }
+    .itens button {
+        width: 55vw;
+        font-size: 1.2rem;
+    }
+    #MODAL {
+        z-index: 1001;
+    }
+}

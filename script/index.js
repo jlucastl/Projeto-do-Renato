@@ -1,0 +1,181 @@
+/*Desculpe a bagunça meu querido amigo afonsio... sou dumb as fuck, tentei deixar o mais legível possível... */
+
+
+/*Funcionalidades do menu lateral */
+let menuIcon = document.getElementById("menuIcon")
+let MENU = document.getElementById("MENU")
+let cabecalhoMenu = document.getElementById("motion")
+
+MENU.style.opacity = "0"
+MENU.style.visibility = "hidden"
+
+cabecalhoMenu.style.display = "none"
+
+function abrirMenu() {
+   if(MENU.style.opacity == "1" && MENU.style.visibility == "visible") {
+      MENU.style.opacity = "0"
+      MENU.style.visibility = "hidden"
+      menuIcon.style.color = "#f5f5f5"
+      menuIcon.style.textShadow = "1px 2px 8px rgb(22, 22, 22)"
+      cabecalhoMenu.style.display = "flex"
+   }
+   else {
+      MENU.style.opacity = "1"
+      MENU.style.visibility = "visible"
+      menuIcon.style.textShadow = "0px 0px 5px gray"
+      cabecalhoMenu.style.display = "flex"
+   }
+}
+
+/* MODAL ------------------------------ */
+   /* MODAL SALAS ------------------------------------------ */
+document.getElementById("MODAL").style.display = "none"
+
+function abrirModal() {
+   document.getElementById("MODAL").style.display = "flex"
+}
+
+function fecharModal() {
+   document.getElementById("MODAL").style.display = "none"
+   document.getElementById("CORPO").style.filter = "none"
+}
+
+function criarSala() {
+   const nome = document.getElementById("nomeSala").value;
+   if (nome.trim() === "") {
+     alert("Digite um nome para a sala!");
+     return;
+   }
+
+   document.getElementById("msgMenu").style.display = "none"
+
+   const containerLI = document.getElementById("SALAS")
+   const salaLI = document.createElement("li")
+   salaLI.className = "SALAS_LI"
+   salaLI.innerHTML = `
+   <div id = "REMOVER_SALA" class = "REMOVER_SALA" onclick="removerSala(this)"><span class="material-symbols-outlined">close_small</span></div>
+   <h3>${nome}</h3>
+   </li>
+   `;
+
+   containerLI.appendChild(salaLI)
+
+   fecharModal();
+   document.getElementById("nomeSala").value = "";
+}
+
+/*Função que verifica se tem salas, se houver remove o "Sem salas" caso contrário adiciona pra nn ficar feio */
+
+function verificarSalas() {
+   const container = document.getElementById("SALAS");
+   const msg = document.getElementById("msgMenu");
+
+   if (container.querySelector(".SALAS_LI")) {
+      msg.style.display = "none";
+   } else {
+      msg.style.display = "flex";
+   }
+}
+
+/*Função que remove a sala */
+
+function removerSala(elemento) {
+   elemento.closest(".SALAS_LI").remove()
+   verificarSalas()
+}
+
+/* MODAL ALUNOS --------------------------------- */
+
+
+document.getElementById("MODAL_ALUNO").style.display = "none"
+
+function abrirModalAluno() {
+   document.getElementById("MODAL_ALUNO").style.display = "flex"
+}
+
+function fecharModalAluno() {
+   document.getElementById("MODAL_ALUNO").style.display = "none"
+   document.getElementById("CORPO").style.filter = "none"
+}
+let escolherImg = document.getElementById("ESCOLHER_IMG")
+let botaoImg = document.getElementById("BOTAO_IMG")
+let addImg = document.getElementById("ADICIONAR_IMG")
+let imagemSelc = document.getElementById("imagemSelc")
+
+function criarAluno() {
+   const nomeAluno = document.getElementById("nomeAluno").value;
+   if (nomeAluno.trim() === "") {
+      alert("Digite um nome para a sala!");
+      return;
+   }
+   
+   document.getElementById("msg").style.display = "none";
+   
+   const container = document.getElementById("alunosContainer");
+   
+   const salaDiv = document.createElement("div");
+   salaDiv.id = 'aluno';
+   salaDiv.classList.add("aluno");
+   
+   salaDiv.innerHTML = `
+   <h3>${nomeAluno}</h3>
+   </div>
+   <div id = "OPCOES" class = "OPCOES"><span onclick="menuOpcoes(this, event)" class="material-symbols-outlined">
+   more_horiz
+   </span>
+   <div id = "OPCOES_MENU" class = "OPCOES_MENU">
+   <h2 id= "ADICIONAR_IMG"> <span class="material-symbols-outlined">image_arrow_up</span>Adicionar Imagem</h2>
+   <h2 id= "REMOVER_DIV" class = "REMOVER_DIV" onclick="removerDiv(this)"><span class="material-symbols-outlined">delete</span>Remover Aluno</h2>
+   </div>
+   </div>
+   `;
+
+   container.appendChild(salaDiv);
+   
+   fecharModalAluno();
+   document.getElementById("nomeAluno").value = "";
+}
+
+/*Verifica se tem alunos, se tiver remove o "Sem Alunos" caso contrário adiciona para nn quebrar o fluxo do site */
+
+function verificarAlunos() {
+   const container = document.getElementById("alunosContainer");
+   const msg = document.getElementById("msg");
+
+   if (container.querySelector(".aluno")) {
+      msg.style.display = "none";
+   } else {
+      msg.style.display = "flex";
+   }
+}
+
+/*Isso aq é sobre os 3 pontinhos encima da div dos alunos */
+
+function menuOpcoes(elemento, event) {
+   event.stopPropagation();
+   
+   let opcoes = elemento.nextElementSibling;
+   let estaAberto = opcoes.style.display === "flex";
+   
+   let todosMenus = document.querySelectorAll(".OPCOES_MENU");
+   todosMenus.forEach(menu => menu.style.display = "none");
+   
+   if (!estaAberto) {
+      opcoes.style.display = "flex";
+   }
+   
+}
+
+/*Isso serve para que quando eu abra o menu dos 3 pontinhos em uma div e logo após em outra, nn fique 2 menus abertos */
+document.addEventListener("click", function() {
+   let todosMenus = document.querySelectorAll(".OPCOES_MENU");
+   todosMenus.forEach(menu => menu.style.display = "none");
+});
+
+/*Deletar a div dos alunos */
+
+function removerDiv(elemento) {
+elemento.closest(".aluno").remove()
+verificarAlunos()
+
+}
