@@ -248,6 +248,10 @@ nav {
     gap: 1.2rem;
 }
 
+#ALUNOS_INTERIOR, #ALUNOS_CIDADE {
+    display: none;
+}
+
 .Sim {
     display: flex;
     align-items: center;
@@ -313,11 +317,14 @@ nav {
     background-color: rgb(192, 39, 39);
 }
 
-#alunosContainer {
+#alunosContainer, #alunosInteriorContainer {
     display: grid;
     grid-template-columns: auto auto auto;
 }
 
+#ALUNOS_SALA {
+    display: none;
+}
 
 #BOTAO_IMAGEM {
     background-color: transparent;
@@ -398,7 +405,7 @@ nav {
     display: none;
     flex-direction: column;
     background-color: white;
-    width: 15rem;
+    width: 13rem;
     gap: .5rem;
     padding: .5rem;
     position: absolute;
@@ -413,10 +420,7 @@ nav {
     align-items: center;
 }
 #OPCOES_MENU h2:hover {
-    color: green;
-}
-#OPCOES_MENU h2:hover span {
-    color: var(--cor-fonte);
+    color: red;
 }
 
 #OPCOES_MENU span {
@@ -424,7 +428,7 @@ nav {
 }
 #OPCOES_MENU span:hover {
     transform: scale(1.1);
-    color: green;
+    color: red;
 }
 
 

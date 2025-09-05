@@ -48,7 +48,6 @@ function fecharModal() {
 
 function criarSala() {
 
-   
    const nome = document.getElementById("nomeSala").value;
    if (nome.trim() === "") {
       avisoSala.style.display = 'flex'
@@ -60,9 +59,10 @@ function criarSala() {
    const containerLI = document.getElementById("SALAS")
    const salaLI = document.createElement("li")
    salaLI.className = "SALAS_LI"
-   salaLI.innerHTML = `
+   salaLI.innerHTML = `<div id = "SALA_ATUAL" onclick = "mudarSala()">
    <div id = "REMOVER_SALA" class = "REMOVER_SALA" onclick="removerSala(this)"><span class="material-symbols-outlined">close_small</span></div>
    <h3>${nome}</h3>
+   </div>
    </li>
    `;
    
@@ -93,6 +93,7 @@ function removerSala(elemento) {
    verificarSalas()
 }
 
+
 /* MODAL ALUNOS --------------------------------- */
 
 
@@ -107,11 +108,6 @@ function fecharModalAluno() {
    document.getElementById("MODAL_ALUNO").style.display = "none"
    document.getElementById("CORPO").style.filter = "none"
 }
-let escolherImg = document.getElementById("ESCOLHER_IMG")
-let botaoImg = document.getElementById("BOTAO_IMG")
-let addImg = document.getElementById("ADICIONAR_IMG")
-let imagemSelc = document.getElementById("imagemSelc")
-
 
 function criarAluno() {
    const nomeAluno = document.getElementById("nomeAluno").value;
@@ -124,6 +120,7 @@ function criarAluno() {
    
    document.getElementById("msg").style.display = "none";
    
+   const containerInterior = document.getElementById("alunosInteriorContainer")
    const container = document.getElementById("alunosContainer");
    
    const salaDiv = document.createElement("div");
@@ -141,13 +138,30 @@ if(interiorCheck.checked) {
    more_horiz
    </span>
    <div id = "OPCOES_MENU" class = "OPCOES_MENU">
-   <h2 id= "ADICIONAR_IMG"> <span class="material-symbols-outlined">image_arrow_up</span>Adicionar Imagem</h2>
    <h2 id= "REMOVER_DIV" class = "REMOVER_DIV" onclick="removerDiv(this)"><span class="material-symbols-outlined">delete</span>Remover Aluno</h2>
    </div>
    </div>
    `;
-   
+   if(interiorCheck.checked) {
+      document.getElementById("ALUNOS_INTERIOR").style.display = "flex"
+      containerInterior.appendChild(salaDiv)
+   }
+   else {
+      document.getElementById("ALUNOS_CIDADE").style.display = "flex"
    container.appendChild(salaDiv);
+}
+   let alunos = Array.from(container.querySelectorAll(".aluno"));
+
+alunos.sort((a, b) => {
+   // quem tem classe "interior" vem antes
+   if (a.classList.contains("interior") && !b.classList.contains("interior")) return -1;
+   if (!a.classList.contains("interior") && b.classList.contains("interior")) return 1;
+   return 0; // mantém a ordem entre iguais
+});
+
+// Limpa o container e adiciona de novo na ordem
+container.innerHTML = "";
+alunos.forEach(aluno => container.appendChild(aluno));
    
 
    fecharModalAluno();
@@ -235,12 +249,24 @@ enviarBtn.addEventListener("click", enviarImagem);
 
 function verificarAlunos() {
    const container = document.getElementById("alunosContainer");
+   const containerInterior = document.getElementById("alunosInteriorContainer")
    const msg = document.getElementById("msg");
    
+   if(containerInterior.querySelector(".aluno")) {
+      msg.style.display = "none";
+      document.getElementById("ALUNOS_INTERIOR").style.display = "flex"
+   }
+   else {
+      msg.style.display = "flex";
+      document.getElementById("ALUNOS_INTERIOR").style.display = "none"
+   }
+
    if (container.querySelector(".aluno")) {
       msg.style.display = "none";
+      document.getElementById("ALUNOS_CIDADE").style.display = "flex"
    } else {
       msg.style.display = "flex";
+      document.getElementById("ALUNOS_CIDADE").style.display = "none"
    }
 }
 
