@@ -256,18 +256,24 @@ function verificarAlunos() {
       msg.style.display = "none";
       document.getElementById("ALUNOS_INTERIOR").style.display = "flex"
    }
-   else {
-      msg.style.display = "flex";
-      document.getElementById("ALUNOS_INTERIOR").style.display = "none"
+   if(!containerInterior.querySelector('.aluno')) {
+      document.getElementById("ALUNOS_INTERIOR").style.display = 'none'
    }
 
-   if (container.querySelector(".aluno")) {
+   else if (container.querySelector(".aluno")) {
       msg.style.display = "none";
       document.getElementById("ALUNOS_CIDADE").style.display = "flex"
-   } else {
-      msg.style.display = "flex";
-      document.getElementById("ALUNOS_CIDADE").style.display = "none"
    }
+
+   if(!container.querySelector('.aluno')) {
+      document.getElementById("ALUNOS_CIDADE").style.display = 'none'
+   }
+
+   if(!container.querySelector('.aluno') && !containerInterior.querySelector('.aluno')) {
+      msg.style.display = "flex";
+   }
+
+    
 }
 
 /*Isso aq é sobre os 3 pontinhos encima da div dos alunos */
