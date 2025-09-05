@@ -232,7 +232,7 @@ nav {
     background-color: rgb(45, 184, 45);
 }
 
-.MODAL, .MODAL_ALUNO {
+.MODAL, .MODAL_ALUNO, .MODAL_IMAGEM {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -248,6 +248,39 @@ nav {
     gap: 1.2rem;
 }
 
+.Sim {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.Sim h4:hover {
+    text-decoration: underline;
+}
+
+.Sim h4 {
+    font-size: 1.2rem;
+}
+
+#SEeINTERIOR {
+    display: none;
+    transition: .2s ease;
+}
+
+#SEeINTERIOR:checked + .Sim span {
+    transition: .2s ease;
+    color: green;
+}
+
+#TOGGLE {
+    font-size: 2.5rem;
+}
+
+#TOGGLE:checked {
+    color: green;
+}
+
 .MODAL h1, .MODAL_ALUNO h1 {
     pointer-events: none;
 }
@@ -259,7 +292,7 @@ nav {
     border-radius: 1.3rem;
 }
 
-.MODAL button, .MODAL_ALUNO button {
+.MODAL button, .MODAL_ALUNO button, .MODAL_IMAGEM button {
     padding: .7rem;
     width: 8rem;
     background-color: limegreen;
@@ -269,7 +302,7 @@ nav {
     font-size: 17px;
 }
 
-.MODAL button:hover, .MODAL_ALUNO button:hover {
+.MODAL button:hover, .MODAL_ALUNO button:hover, .MODAL_IMAGEM button:hover {
     background-color: rgb(45, 184, 45);
 }
 
@@ -285,18 +318,24 @@ nav {
     grid-template-columns: auto auto auto;
 }
 
-#ESCOLHER_IMG {
-    display: none;
-}
 
-#BOTAO_IMG {
+#BOTAO_IMAGEM {
     background-color: transparent;
-    border: dotted black;
+    border: dotted .2rem black;
     width: 12rem;
     padding: 1.3rem;
 }
-#BOTAO_IMG:hover {
+
+#BOTAO_IMAGEM span {
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+#BOTAO_IMAGEM:hover{
     border: dotted green;
+}
+#BOTAO_IMAGEM:hover span {
+    color: green;
 }
 
 .aluno{
@@ -317,6 +356,27 @@ nav {
     border-bottom-right-radius: 1.5rem;
     border-bottom-left-radius: 1.5rem;
     box-shadow: 0px 0px 10px rgba(43, 43, 43, 0.534);
+}
+
+#AVISO_ALUNO, #AVISO_SALA, #AVISO_IMAGEM {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: red;
+    top: 7rem;
+    font-size: .5rem;
+    pointer-events: none;
+}
+#AVISO_ALUNO span, #AVISO_SALA span, #AVISO_IMAGEM span{
+    font-size: 1.4rem;
+}
+
+#fileInput {
+    display: none;
+}
+
+.aluno.interior h3 {
+    background-color: yellow;
 }
 .OPCOES {
     position: absolute;

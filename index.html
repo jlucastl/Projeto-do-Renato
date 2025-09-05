@@ -57,7 +57,10 @@
             <h1>Criar Sala</h1>
 
             <input type="text" id="nomeSala" placeholder="Nome da Sala">
-            
+            <div id="AVISO_SALA">
+                <span class="material-symbols-outlined">error</span>
+                <h1>O campo de nome é obrigatório</h1>
+                </div>
             <div class="MODAL_BOTOES">
             
             <button class="btn" onclick="criarSala()">Criar</button>
@@ -70,18 +73,41 @@
 
         <section class="MODAL_ALUNO" id="MODAL_ALUNO">
             <h1>Criar Aluno</h1>
-
+            
             <input type="text" id="nomeAluno" placeholder="Nome do Aluno">
+            <div id="AVISO_ALUNO">
+            <span class="material-symbols-outlined">error</span>
+            <h1>O campo de nome é obrigatório</h1>
+            </div>
 
-            <button id="BOTAO_IMG">Escolher Imagem</button>
-
-            <input type="file" id="ESCOLHER_IMG" accept="image/*">
-
+            <input id="SEeINTERIOR" type="checkbox" placeholder="">
+            <label for="SEeINTERIOR" onclick="checkToggle()" class="Sim">
+            <h4>O Aluno é do interior?</h4>
+            <span id="TOGGLE" class="material-symbols-outlined">
+                toggle_off
+                </span>
+            </label>
             <div class="MODAL_BOTOES">
 
             <button class="btn" onclick="criarAluno()">Criar</button>
 
             <button id="btn-cancelar" onclick="fecharModalAluno()">Cancelar</button>
+            </div>
+        </section>
+        <section id="MODAL_IMAGEM" class="MODAL_IMAGEM">
+            <h1>Envie uma foto do aluno</h1>
+
+            <button id="BOTAO_IMAGEM"><span id="imagemIcon">Escolha uma Imagem</span></button>
+            <input type="file" id="fileInput" accept="imagem/*">
+
+            <div id="AVISO_IMAGEM">
+                <span class="material-symbols-outlined">error</span>
+                <h1>Adicione uma imagem para prosseguir</h1>
+                </div>
+            <div class="MODAL_BOTOES">
+            
+            <button id="enviarBtn" class="btn" onclick="enviarImagem()">Enviar</button>
+           
             </div>
         </section>
 
