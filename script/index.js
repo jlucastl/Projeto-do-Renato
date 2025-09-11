@@ -59,10 +59,9 @@ function criarSala() {
    const containerLI = document.getElementById("SALAS")
    const salaLI = document.createElement("li")
    salaLI.className = "SALAS_LI"
-   salaLI.innerHTML = `<div id = "SALA_ATUAL" onclick = "mudarSala()">
-   <div id = "REMOVER_SALA" class = "REMOVER_SALA" onclick="removerSala(this)"><span class="material-symbols-outlined">close_small</span></div>
+   salaLI.innerHTML = `
+   <div id = "REMOVER_SALA" class = "REMOVER_SALA" onclick="removerSala(this)"><span class="material-symbols-outlined" title="Remover Sala">close_small</span></div>
    <h3>${nome}</h3>
-   </div>
    </li>
    `;
    
@@ -283,6 +282,7 @@ function menuOpcoes(elemento, event) {
    
    let opcoes = elemento.nextElementSibling;
    let estaAberto = opcoes.style.display === "flex";
+
    
    let todosMenus = document.querySelectorAll(".OPCOES_MENU");
    todosMenus.forEach(menu => menu.style.display = "none");
