@@ -86,12 +86,25 @@ function verificarSalas() {
 }
 
 /*Função que remove a sala */
+document.getElementById("MODAL_REMOVER").style.display = "none"
+
+const btnSim = document.getElementById("btn_confirmar")
+const btnNao = document.getElementById("btn_cancelar")
 
 function removerSala(elemento) {
-   elemento.closest(".SALAS_LI").remove()
-   verificarSalas()
-}
+  document.getElementById("MODAL_REMOVER").style.display = 'flex';
+     document.getElementById("REMOVER_h1").textContent = "Tem certeza que deseja remover essa sala?"
 
+  btnSim.onclick = function () {
+    elemento.closest(".SALAS_LI").remove();
+    verificarSalas();
+    document.getElementById("MODAL_REMOVER").style.display = "none";
+  };
+
+  btnNao.onclick = function () {
+    document.getElementById("MODAL_REMOVER").style.display = "none";
+  };
+}
 
 /* MODAL ALUNOS --------------------------------- */
 
@@ -302,7 +315,18 @@ document.addEventListener("click", function() {
 /*Deletar a div dos alunos */
 
 function removerDiv(elemento) {
-elemento.closest(".aluno").remove()
-verificarAlunos()
+   document.getElementById("MODAL_REMOVER").style.display = 'flex';
+   document.getElementById("REMOVER_h1").textContent = "Tem certeza que deseja remover esse aluno?"
+   
+
+btnSim.onclick = function () {
+   elemento.closest(".aluno").remove()
+   verificarAlunos();
+   document.getElementById("MODAL_REMOVER").style.display = "none";
+ };
+
+ btnNao.onclick = function () {
+   document.getElementById("MODAL_REMOVER").style.display = "none";
+ };
 
 }
