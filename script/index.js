@@ -17,6 +17,8 @@ MENU.style.visibility = "hidden"
 
 cabecalhoMenu.style.display = "none"
 
+verificarSalas(); //Verifica se tem salas, se tiver salas ele tira a div dos alunos e troca pela de criar salas
+
 function abrirMenu() {
    if(MENU.style.opacity == "1" && MENU.style.visibility == "visible") {
       MENU.style.opacity = "0"
@@ -68,6 +70,7 @@ function criarSala() {
    containerLI.appendChild(salaLI)
    
    fecharModal();
+   verificarSalas();
    document.getElementById("nomeSala").value = "";
    avisoSala.style.display = "none"
 }
@@ -75,15 +78,23 @@ function criarSala() {
 /*Função que verifica se tem salas, se houver remove o "Sem salas" caso contrário adiciona pra nn ficar feio */
 
 function verificarSalas() {
+   const salasVazias = document.getElementById("SALAS_VAZIAS")
+   const semSalas = document.getElementById("APRESENTACAO");
    const container = document.getElementById("SALAS");
    const msg = document.getElementById("msgMenu");
+
    
    if (container.querySelector(".SALAS_LI")) {
       msg.style.display = "none";
+      semSalas.style.display = 'flex'
+      salasVazias.style.display = 'none'
    } else {
       msg.style.display = "flex";
+      semSalas.style.display = 'none'
+      salasVazias.style.display = 'flex'
    }
 }
+
 
 /*Função que remove a sala */
 document.getElementById("MODAL_REMOVER").style.display = "none"
@@ -124,7 +135,7 @@ function fecharModalAluno() {
 function criarAluno() {
    const nomeAluno = document.getElementById("nomeAluno").value;
    const interiorCheck = document.getElementById("SEeINTERIOR")
-
+   
    if (nomeAluno.trim() === "") {
       avisoAluno.style.display = 'flex'
       return;
@@ -139,10 +150,10 @@ function criarAluno() {
    salaDiv.id = 'aluno';
    salaDiv.classList.add("aluno");
    
-if(interiorCheck.checked) {
-   salaDiv.classList.add("interior")
-}
-
+   if(interiorCheck.checked) {
+      salaDiv.classList.add("interior")
+   }
+   
    salaDiv.innerHTML = `
    <h3>${nomeAluno}</h3>
    </div>
@@ -155,11 +166,11 @@ if(interiorCheck.checked) {
    </div>
    `;
    if(interiorCheck.checked) {
-      document.getElementById("ALUNOS_INTERIOR").style.display = "flex"
+      document.getElementById("ALUNOS_INTERIOR").style.display = "block"
       containerInterior.appendChild(salaDiv)
    }
    else {
-      document.getElementById("ALUNOS_CIDADE").style.display = "flex"
+      document.getElementById("ALUNOS_CIDADE").style.display = "block"
    container.appendChild(salaDiv);
 }
    let alunos = Array.from(container.querySelectorAll(".aluno"));

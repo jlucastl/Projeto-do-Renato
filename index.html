@@ -44,8 +44,8 @@
 
 <!-- "Apresentação" é a primeira parte do main, abaixo do header -->
 
-        <div class="APRESENTACAO">
-            <h1>Alunos</h1>
+        <div id="APRESENTACAO" class="APRESENTACAO">
+            <h1 class="APRESENTACAO_h1">Alunos</h1>
             <button class="btn" onclick="abrirModalAluno()">Adicionar um aluno</button>
             <p id="msg">Sem alunos</p>
             <h1 id="ALUNOS_INTERIOR">Alunos do Interior</h1>
@@ -125,7 +125,23 @@
             </div>
         </section>
 
+<!-- Essa section é para quando não há salas, o usuário criar uma -->
+
+        <section id="SALAS_VAZIAS" class="SALAS_VAZIAS">
+            <section class="SALAS_VAZIAS">
+                <h1>Não há salas</h1>
+                <button onclick="abrirModal()"><h4>Criar uma sala</h4></button>
+            </section>
+        </section>
+
+
     </main>
+
+
+
+
+
+
     <footer id="RODAPE">
         <h3>Site feito por: </h3>
         <p>João Lucas</p>
